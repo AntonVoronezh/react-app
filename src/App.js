@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import "./styles/App.css";
 import PostItem from "./compomemts/PostItem";
+import PostList from "./compomemts/PostList";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -11,10 +12,7 @@ function App() {
 
   return (
     <div className="App">
-        <h1 style={{textAlign: "center"}}>список</h1>
-      {posts.map((el) => (
-        <PostItem posts={el} key={el.id} />
-      ))}
+       <PostList posts={posts}/>
     </div>
   );
 }
