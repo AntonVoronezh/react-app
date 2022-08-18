@@ -19,7 +19,12 @@ function App() {
 
   const addNewPost = (e) => {
     e.preventDefault();
-    const newPost = { title, body };
+    const newPost = { title, body, id: Date.now(), desc: "bbbb" };
+
+    setPosts([...posts, newPost]);
+
+    setTitle("");
+    setBody("");
   };
 
   return (

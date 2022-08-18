@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PostItem = ({posts}) => {
+const PostItem = ({i, posts}) => {
     return (
         <div className="post">
-            <strong>{posts.id}</strong>
+            <strong>{i}</strong>
             <div>{posts.title}</div>
             <div className="post__btns">
                 <button>{posts.desc}</button>
