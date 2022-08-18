@@ -5,8 +5,9 @@ const PostItem = ({i, posts}) => {
         <div className="post">
             <strong>{i}</strong>
             <div>{posts.title}</div>
+            <div>{posts.body}</div>
             <div className="post__btns">
-                <button>{posts.desc}</button>
+                <button>uiygi8</button>
             </div>
         </div>
     );

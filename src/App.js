@@ -8,23 +8,25 @@ import MyInput from "./compomemts/UI/input/MyInput";
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: 0, title: "aaaa", desc: "bbbb" },
-    { id: 1, title: "aaaa1", desc: "bbbb1" },
+    { id: 0, title: "aaaa", body: "bbbb" },
+    { id: 1, title: "aaaa1", body: "bbbb1" },
   ]);
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [post, setPost] = useState({ title: "", body: "" });
 
   const inputRef = useRef();
 
   const addNewPost = (e) => {
     e.preventDefault();
-    const newPost = { title, body, id: Date.now(), desc: "bbbb" };
-
-    setPosts([...posts, newPost]);
-
-    setTitle("");
-    setBody("");
+    setPosts([...posts, { ...post, id: Date.now() }]);
+    // const newPost = { title, body, id: Date.now() };
+    //
+    // setPosts([...posts, newPost]);
+    //
+    // setTitle("");
+    // setBody("");
   };
 
   return (
@@ -33,8 +35,8 @@ function App() {
         <MyInput
           type="text"
           placeholder="название"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={post.title}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
         />
         {/*<MyInput*/}
         {/*  type="text"*/}
@@ -44,9 +46,9 @@ function App() {
         {/*/>    */}
         <MyInput
           type="text"
-          value={body}
+          value={post.body}
           placeholder="описаник"
-          onChange={(e) => setBody(e.target.value)}
+          onChange={(e) => setPost({ ...post, body: e.target.value })}
         />
         <MyButton type="submit" onClick={addNewPost}>
           6777dthyj
