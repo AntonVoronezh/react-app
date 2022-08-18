@@ -4,6 +4,7 @@ import "./styles/App.css";
 import PostItem from "./compomemts/PostItem";
 import PostList from "./compomemts/PostList";
 import MyButton from "./compomemts/UI/button/MyButton";
+import MyInput from "./compomemts/UI/input/MyInput";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -14,8 +15,8 @@ function App() {
   return (
     <div className="App">
       <form>
-        <input type="text" placeholder='название'/>
-        <input type="text" placeholder='описаник'/>
+        <MyInput type="text" placeholder='название'/>
+        <MyInput type="text" placeholder='описаник'/>
           <MyButton > 6777dthyj </MyButton>
       </form>
        <PostList posts={posts}/>
