@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./App.css";
 import "./styles/App.css";
 import PostItem from "./compomemts/PostItem";
@@ -12,14 +12,42 @@ function App() {
     { id: 1, title: "aaaa1", desc: "bbbb1" },
   ]);
 
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const inputRef = useRef();
+
+  const addNewPost = (e) => {
+    e.preventDefault();
+    const newPost = { title, body };
+  };
+
   return (
     <div className="App">
       <form>
-        <MyInput type="text" placeholder='название'/>
-        <MyInput type="text" placeholder='описаник'/>
-          <MyButton > 6777dthyj </MyButton>
+        <MyInput
+          type="text"
+          placeholder="название"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        {/*<MyInput*/}
+        {/*  type="text"*/}
+        {/*  placeholder="описаник"*/}
+        {/*  onChange={() => {}}*/}
+        {/*  ref={inputRef}*/}
+        {/*/>    */}
+        <MyInput
+          type="text"
+          value={body}
+          placeholder="описаник"
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <MyButton type="submit" onClick={addNewPost}>
+          6777dthyj
+        </MyButton>
       </form>
-       <PostList posts={posts}/>
+      <PostList posts={posts} />
     </div>
   );
 }
