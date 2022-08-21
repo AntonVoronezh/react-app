@@ -6,6 +6,7 @@ import PostList from "./compomemts/PostList";
 import MyButton from "./compomemts/UI/button/MyButton";
 import MyInput from "./compomemts/UI/input/MyInput";
 import PostForm from "./compomemts/PostForm";
+import MySelect from "./compomemts/UI/select/MySelect";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -40,7 +41,18 @@ function App() {
   return (
     <div className="App">
       <PostForm create={createPost} />
-      <PostList posts={posts} remove={removePost}/>
+      <MySelect
+        defaultValue=""
+        options={[
+          { value: "title", name: "title" },
+          { value: "body", name: "body" },
+        ]}
+      />
+      {posts.length ? (
+        <PostList posts={posts} remove={removePost} />
+      ) : (
+        <div>-------------</div>
+      )}
     </div>
   );
 }
