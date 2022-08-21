@@ -5,6 +5,7 @@ import PostItem from "./compomemts/PostItem";
 import PostList from "./compomemts/PostList";
 import MyButton from "./compomemts/UI/button/MyButton";
 import MyInput from "./compomemts/UI/input/MyInput";
+import PostForm from "./compomemts/PostForm";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -12,48 +13,29 @@ function App() {
     { id: 1, title: "aaaa1", body: "bbbb1" },
   ]);
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [post, setPost] = useState({ title: "", body: "" });
+  // const [title, setTitle] = useState("");
+  // const [body, setBody] = useState("");
 
   const inputRef = useRef();
 
-  const addNewPost = (e) => {
-    e.preventDefault();
-    setPosts([...posts, { ...post, id: Date.now() }]);
-    // const newPost = { title, body, id: Date.now() };
-    //
-    // setPosts([...posts, newPost]);
-    //
-    // setTitle("");
-    // setBody("");
+  // const addNewPost = (e) => {
+  //   e.preventDefault();
+  //   setPosts([...posts, { ...post, id: Date.now() }]);
+  //   // const newPost = { title, body, id: Date.now() };
+  //   //
+  //   // setPosts([...posts, newPost]);
+  //   //
+  //   // setTitle("");
+  //   // setBody("");
+  // };
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
   };
 
   return (
     <div className="App">
-      <form>
-        <MyInput
-          type="text"
-          placeholder="название"
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-        />
-        {/*<MyInput*/}
-        {/*  type="text"*/}
-        {/*  placeholder="описаник"*/}
-        {/*  onChange={() => {}}*/}
-        {/*  ref={inputRef}*/}
-        {/*/>    */}
-        <MyInput
-          type="text"
-          value={post.body}
-          placeholder="описаник"
-          onChange={(e) => setPost({ ...post, body: e.target.value })}
-        />
-        <MyButton type="submit" onClick={addNewPost}>
-          6777dthyj
-        </MyButton>
-      </form>
+      <PostForm create={createPost} />
       <PostList posts={posts} />
     </div>
   );
