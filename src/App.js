@@ -16,6 +16,7 @@ function App() {
 
   // const [title, setTitle] = useState("");
   // const [body, setBody] = useState("");
+  const [selectedSort, setSelectedSort] = useState("");
 
   const inputRef = useRef();
 
@@ -38,6 +39,11 @@ function App() {
     setPosts(posts.filter((el) => el.id !== post.id));
   };
 
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
+    setPosts([...posts].sort());
+  };
+
   return (
     <div className="App">
       <PostForm create={createPost} />
@@ -47,6 +53,8 @@ function App() {
           { value: "title", name: "title" },
           { value: "body", name: "body" },
         ]}
+        value={selectedSort}
+        onChange={sortPosts}
       />
       {posts.length ? (
         <PostList posts={posts} remove={removePost} />
